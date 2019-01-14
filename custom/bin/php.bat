@@ -5,7 +5,7 @@ call bootstrap.bat
 rem set the following block based on your installation
 set ff_phpparent=c:\prod\
 set ff_customdir=%ff_phpparent%custom\
-set ff_defaultphp=php71ts
+set ff_defaultphp=php_71ts
 set ff_defaultphpini=%ff_customdir%php\phpfcgi\php.ini
 
 set phpver=%ff_defaultphp%
@@ -17,10 +17,10 @@ set phpvernext=0
 set phpininext=0
 :filterargs
   if "%1"=="" goto run
-  if /I "%1"=="--ff-help" (
+  if /I "%1"=="--help" (
 	goto help
   )
-  if /I "%1"=="--ff-php-ver" (
+  if /I "%1"=="--php-ver" (
     set phpvernext=1
 	goto contfilterargs
   )
@@ -29,7 +29,7 @@ set phpininext=0
 	set phpvernext=0
 	goto contfilterargs
   )
-  if /I "%1"=="--ff-php-ini" (
+  if /I "%1"=="--php-ini" (
     set phpininext=1
 	goto contfilterargs
   )
@@ -52,9 +52,9 @@ set phpininext=0
 
 :help
   echo Usage: php [options]
-  echo    --ff-help         This help
-  echo    --ff-php-ver      Use a specific PHP version (must be present in %ff_phpparent%)
-  echo    --ff-php-ini      Custom PHP Ini to use
+  echo    --help         This help
+  echo    --php-ver      Use a specific PHP version (must be present in %ff_phpparent%)
+  echo    --php-ini      Custom PHP Ini to use
   goto exit
 
 :exit
